@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+	  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	  <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="font-sans bg-white h-screen flex flex-col w-full">
+  <ul class="container mx-auto flex-initial">
+    <li class=""><a href="#">HOME</a></li>
+    <li><%=link_to "NEW", new_article_path%></li>
+    <li><%=link_to "EDIT",  edit_article_path%></li>
+    <li><%=link_to "UPDATE", update_article_path %></li>
+    <li><%=link_to 'DELETE', delete_article_path %></li>
+    </ul>
+    <%= yield %>
+  </body>
+</html>
