@@ -1,24 +1,26 @@
 <h2> WELLO HORLD!</h2>
 
-<table>
+<table class="table-fixed text-left m-4">
     <thead>
         <tr>
-            <th>Title</th>
-            <th>Content</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th class="w-1/4">Title</th>
+            <th class="w-1/2">Content</th>
+            <th class="w-1/16">Edit</th>
+            <th class="w-1/16">Delete</th>
+            <th class="w-1/8">Last Upated</th>
         </tr>
     </thead>
     <tbody>
         <% @articles.each do |article| %>
             <tr>
-                <td><%= article.title %></td>
+                <td><%=link_to "#{article.title}" , show_article_path(article) %></td>
                 <td><%= article.content %></td>
                 <td><%= link_to 'Edit', edit_article_path(article) %></td>
                 <td><%= link_to 'Delete', delete_article_path(article) %></td>
+                <td> <%= article.updated_at %></td>
             </tr>
         <% end %>
     </tbody>
 </table>
 
-<%= link_to 'New Article', new_article_path %>
+<button><%= link_to 'New Article', new_article_path %></button>

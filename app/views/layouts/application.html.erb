@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Blog</title>
+    <title>blog ni deyb</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,10 +12,8 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="font-sans bg-white h-screen flex flex-col w-full">
-  <ul class="container mx-auto flex-initial">
-    <li class=""><a href="/">HOME</a></li>
-       </ul>
-    <%= yield %>
+  <body class="font-sans bg-white bg-opacity-80 h-screen flex flex-col w-full m-5 p-2 rounded-3xl">
+        <h1 class='m-6'> BLOG NI DAVE</h1>
+      <%= yield %>
   </body>
 </html>

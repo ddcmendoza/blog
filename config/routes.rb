@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'articles#index'
 
   get '/articles' => 'articles#index'
-  
+  get '/articles/:id' => 'articles#show', as: 'show_article'
   get '/article/new' => 'articles#new', as: 'new_article'
   post '/article/create' => 'articles#create', as: 'create_article'
   get 'articles/edit/:id' => 'articles#edit', as: 'edit_article'
