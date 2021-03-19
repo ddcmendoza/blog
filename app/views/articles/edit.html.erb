@@ -1,2 +1,24 @@
-<h1>Articles#edit</h1>
-<p>Find me in app/views/articles/edit.html.erb</p>
+<% if @article.errors.any? %>
+ <h2>The following errors prevented the article from saving:</h2>
+ <ul>
+ <% @article.errors.full_messages.each do |msg|%>
+ <li><%= msg %></li>
+ <% end %>
+ </ul>
+<% end %>
+
+<%= form_with url: update_article_path(@article), method: "patch" do |f|%>
+
+<p>
+    <%= f.label :title %> <br />
+    <%= f.text_field :title, :value => @article.title %>
+</p>
+<p>
+    <%= f.label :content %> <br />
+    <%= f.text_field :content, :value => @article.content %>
+</p>
+<p>
+    <%= f.submit %>
+</p>
+<%= link_to 'Back', articles_path %>
+<% end %>
