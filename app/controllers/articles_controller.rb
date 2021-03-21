@@ -17,11 +17,15 @@ class ArticlesController < ApplicationController
     @article = Article.new
     @article.title = params[:title]
     @article.content = params[:content]
-
-    if @article.save
-      redirect_to articles_path
+    if @article.title != "" or @article.content != ""
+      if @article.save
+        redirect_to articles_path
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to new_article_path
+      flash[:alert] = "Can't publish empty article"
     end
   end
 
@@ -31,7 +35,7 @@ class ArticlesController < ApplicationController
       flash[:notice] = "Article was updated"
       redirect_to articles_path(@article)
      else
-      flash[:notice] = "Article was not updated"
+      flash[:alert] = "Article was not updated"
       render 'edit'
      end
   end
@@ -39,7 +43,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
   @article.destroy
-  flash[:notice] = "Article was deleted"
+  flash[:warning] = "Article was deleted"
   redirect_to articles_path
   end
 end

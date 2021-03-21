@@ -1,26 +1,35 @@
-<h2> WELLO HORLD!</h2>
+<h1 class= "font-bold text-xl mb-2 mx-5"> WELLO HORLD!</h2>
+<p class="text-gray-700 text-base mx-5">Welcome to my blog!</p>
 
-<table class="table-fixed text-left m-4">
+<table class="table-fixed text-left m-4 border-separate border border-green-800">
     <thead>
         <tr>
-            <th class="w-1/4">Title</th>
-            <th class="w-1/2">Content</th>
-            <th class="w-1/16">Edit</th>
-            <th class="w-1/16">Delete</th>
-            <th class="w-1/8">Last Upated</th>
+            <th class="w-1/4 border border-green-800">Title</th>
+            <th class="w-1/2 border border-green-800">Content</th>
+            <th class="w-1/16 border border-green-800">Edit</th>
+            <th class="w-1/16 border border-green-800">Delete</th>
+            <th class="w-1/8 border border-green-800">Last Upated</th>
         </tr>
     </thead>
     <tbody>
         <% @articles.each do |article| %>
-            <tr>
-                <td><%=link_to "#{article.title}" , show_article_path(article) %></td>
-                <td><%= article.content %></td>
-                <td><%= link_to 'Edit', edit_article_path(article) %></td>
-                <td><%= link_to 'Delete', delete_article_path(article) %></td>
-                <td> <%= article.updated_at %></td>
+            <tr max-height="50px" class="overflow-hidden">
+                <td class= "border border-green-800 font-bold text-xl"><%=link_to "#{article.title.truncate(20)}" , show_article_path(article) %></td>
+                <td class= "border border-green-800 text-gray-700 text-base" ><%= article.content.truncate(50) %></td>
+                <td class= "border border-green-800"><%= link_to  edit_article_path(article) do %>
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold my-1 py-2 px-4 rounded">Edit</button>
+                    <%end%>
+                 </td>
+                <td class= "border border-green-800"><%= link_to delete_article_path(article) do %>
+                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+                <%end%>
+                </td>
+                <td class= "border border-green-800"> <%= article.updated_at %></td>
             </tr>
         <% end %>
     </tbody>
 </table>
 
-<button><%= link_to 'New Article', new_article_path %></button>
+<div class="flex justify-center"><%= link_to new_article_path do %>
+<button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">NEW</button>
+<%end%></div>

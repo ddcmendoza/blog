@@ -1,3 +1,22 @@
-<h1><%= @article.title %></h1>
-<p><%= @article.content %></p>
-<%= link_to 'Back', articles_path %>
+
+<div class="container ">
+<div  class="max-w rounded shadow-lg my-5">
+    <h1 class="font-bold text-xl mb-2"><%= @article.title %></h1>
+    <p class="text-gray-700 text-base"><%= simple_format @article.content.gsub(/(?:\n\r?|\r\n?)/, '<br>') %></p>
+</div>
+</div>
+
+<div>
+    <%= link_to  edit_article_path(@article) do %>
+        <button class="bg-green-500 hover:bg-green-700 text-white font-bold my-1 py-2 px-4 rounded">Edit</button>
+    <%end%>
+    <%= link_to delete_article_path(@article) do %>
+        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+    <%end%>
+</div>
+<%= link_to :back do %>
+<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold my-1 py-2 px-4 rounded">Back</button>
+<% end %>
+<%= link_to articles_path do %>
+    <button class="bg-blue-400 hover:bg-blue-600 text-white font-bold my-1 py-2 px-4 rounded">Home</button>
+    <% end %>

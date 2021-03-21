@@ -1,3 +1,4 @@
+<div class="my-5 mx-5">
 <%= form_with url: create_article_path do |f|%>
 
 <p>
@@ -6,10 +7,18 @@
 </p>
 <p>
     <%= f.label :content %> <br />
-    <%= f.text_area(:content, :size=>"50") %>
+    <%= f.text_area :content, size: "100x25", class: "focus:outline-none" %>
 </p>
 <p>
-    <%= f.submit %>
-</p>
-
+    <%= button_tag(type: 'submit', class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-5") do %>
+ Publish
 <% end %>
+</p>
+<%= link_to :back do %>
+<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold my-1 py-2 px-4 rounded">Back</button>
+<% end %>
+<%= link_to articles_path do %>
+    <button class="bg-blue-400 hover:bg-blue-600 text-white font-bold my-1 py-2 px-4 rounded">Home</button>
+    <% end %>
+<% end %>
+</div>
